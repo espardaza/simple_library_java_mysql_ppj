@@ -1,0 +1,34 @@
+@baseUrl = http://localhost:8080/api/v1
+
+### 1. Create User (User A) + view user list
+POST {{baseUrl}}/users
+Content-Type: application/json
+
+{
+  "name": "Nguyen Van A",
+  "email": "nguyenvana@gmail.com"
+}
+
+### 2. Create Books + view book list
+POST {{baseUrl}}/books
+Content-Type: application/json
+
+{
+  "title": "Clean Code",
+  "author": "Robert C. Martin",
+  "isbn": "978-0132350884"
+}
+
+
+### 3. Borrowing Books (User 2 borrows Book 2)
+# Note: Edit the ID number if your database is different.
+POST {{baseUrl}}/borrow?userId=2&bookId=2
+
+### 4. View the List of Borrowed Items
+GET {{baseUrl}}/borrow
+
+### 5. Return Book (User 2 returns Book 2)
+PUT {{baseUrl}}/borrow/return?userId=2&bookId=2
+
+### 6. View Payment History
+GET {{baseUrl}}/borrow/return
